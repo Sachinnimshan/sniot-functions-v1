@@ -1,7 +1,6 @@
-export default async function handler(req, res) {
-  if (req.method === "POST") {
-    // Example Smart Home SYNC response
-    res.json({
+export default function handler(req, res) {
+  if (req.method === 'POST') {
+    res.status(200).json({
       requestId: req.body.requestId,
       payload: {
         agentUserId: "123",
@@ -11,14 +10,14 @@ export default async function handler(req, res) {
             type: "action.devices.types.LIGHT",
             traits: ["action.devices.traits.OnOff"],
             name: {
-              name: "Pond Light",
+              name: "Pond Light"
             },
-            willReportState: false,
-          },
-        ],
-      },
+            willReportState: false
+          }
+        ]
+      }
     });
   } else {
-    res.status(405).end(); // Method not allowed
+    res.status(405).end(); // Method Not Allowed
   }
 }
